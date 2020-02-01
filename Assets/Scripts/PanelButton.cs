@@ -14,11 +14,6 @@ public class PanelButton : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        
-    }
-
     public void Init(PowerPanel parentPanel,  string symbol) 
     {
         this.symbol = GetComponentInChildren<TextMeshProUGUI>();
@@ -30,7 +25,6 @@ public class PanelButton : MonoBehaviour
     {
         if(other.tag.Equals("Finger"))
         {
-            Debug.Log("Triggered by " + other.name + " symbol: " + symbol.text);
             parentPanel.CheckButton(symbol.text);
             animator.SetTrigger("pressed");
         }

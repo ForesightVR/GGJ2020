@@ -99,9 +99,6 @@ public class PowerPanel : MonoBehaviour
     {
         if (symbolIndex >= generatedSymbols.Count) return;
 
-        foreach (string s in generatedSymbols)
-            Debug.Log(s);
-
         if (generatedSymbols[symbolIndex] == symbol)
         {
             if(symbolIndex < generatedSymbols.Count -1)

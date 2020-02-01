@@ -22,12 +22,9 @@ public class PowerPanelButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("isReady = " + isReady);
         if (!isReady) return;
         if(other.tag.Equals("Finger"))
         {
-            Debug.Log("Touch!");
-
             powerPanel.TurnOnPanel();
         }
     }

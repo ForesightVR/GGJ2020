@@ -11,17 +11,17 @@ public class PowerManager : MonoBehaviour
     int currentPanel;
     void Start()
     {
-        StartPanel(0);
+        powerPanels[0].PrepareButton();
     }
 
     public void ActivateNextPanel() 
     {
-        Debug.LogError("Activate Next Panel");
         if(currentPanel < powerPanels.Count - 1)
         {
             powerPanels[currentPanel].gameObject.SetActive(false);
             currentPanel++;
-            StartPanel(currentPanel);
+            powerPanels[currentPanel].PrepareButton();
+            //StartPanel(currentPanel);
         }
         else
         {
@@ -31,9 +31,19 @@ public class PowerManager : MonoBehaviour
         }
     }
 
-    void StartPanel(int panelIndex)
+    public void StartPanel(int panelIndex)
     {
         powerPanels[panelIndex].Init(this);
+    }
+
+    public int GetIndex(PowerPanel panel)
+    {
+        for(int i = 0; i < powerPanels.Count; i++)
+        {
+            if (powerPanels[i] == panel)
+                return i;
+        }
+        return 0;
     }
 
     public void EndPanel()

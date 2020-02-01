@@ -12,15 +12,20 @@ public class PowerPanel : MonoBehaviour
 
     public GameObject panelBtnArea;
     public TextMeshProUGUI symbolArea;
+    public Animator animator;
+    public MeshRenderer buttonRenderer;
+    public PowerPanelButton panelButton;
 
     int symbolIndex;
     char[] possibleSymbols;
     List<string> generatedSymbols = new List<string>();
     PowerManager powerManager;
-
+    List<GameObject> buttons = new List<GameObject>();
 
     public void Init(PowerManager powerManager)
     {
+        symbolIndex = 0;
+        animator.SetTrigger("Open");
         this.powerManager = powerManager;
        
         //Generate Symbols
@@ -38,8 +43,15 @@ public class PowerPanel : MonoBehaviour
             var spawnedObj = Instantiate(powerManager.panelButton, panelBtnArea.transform);
             spawnedObj.transform.localPosition = new Vector2(startingValue, 0);
             spawnedObj.GetComponent<PanelButton>().Init(this, possibleSymbols[i].ToString());
+            buttons.Add(spawnedObj);
             startingValue += incrementValue;
         }
+    }
+
+    public void PrepareButton()
+    {
+        buttonRenderer.material.color = Color.green;
+        panelButton.Init(this);
     }
 
     void GenerateSymbols()
@@ -62,23 +74,27 @@ public class PowerPanel : MonoBehaviour
 
         if (generatedSymbols[symbolIndex] == symbol)
         {
-            Debug.Log("Symbol matches");
-            //they match and increment
 
             if(symbolIndex < generatedSymbols.Count -1)
             {
-                Debug.Log("Increment");
                 symbolIndex++;
             }
             else
+            {
                 powerManager.EndPanel();
+            }
         }
         else
         {
-            Debug.Log("Symbols don't match! " + "Selected Symbol: " + symbol + " Symbol I was looking for: " + generatedSymbols[symbolIndex]);
-            symbolIndex = 0;
-            GenerateSymbols();
+            Failed();
         }
+    }
+
+    void Failed()
+    {
+        foreach (GameObject go in buttons)
+            Destroy(go);
+        buttons.Clear();
     }
 
     public void TurnOnPanel()

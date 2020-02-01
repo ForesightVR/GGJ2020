@@ -11,9 +11,4 @@ public class VacuumTube : MonoBehaviour
         this.character = character;
         text.SetText(character.ToString());
     }
-
-    void Update()
-    {
-        
-    }
 }

@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿using System.Collections;
 using OuterRimStudios.Utilities;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -6,55 +6,103 @@ using Random = UnityEngine.Random;
 public class Panel : MonoBehaviour
 {
     private int NUM_SOCKETS = 6;
-    private int NUM_VACUUM_TUBES = 10;
-    
+    private int NUM_ROUNDS = 3;
+
     public GameObject sockets;
     public GameObject vacuumTubes;
+    public Animator socketedVacuumTubesAnimator;
+    
     public GameObject vacuumTubePrefab;
     public string possibleCharacters;
 
     private int lockedSocketCount = 0;
+    private int roundIndex = 0;
+
+    private Transform[][] rounds;
+    private static readonly int WinRound = Animator.StringToHash("WinRound");
 
     void Start()
     {
-        var characters = possibleCharacters.ToCharArray().GetRandomItems(NUM_VACUUM_TUBES);
-        var socketChars = characters.GetRandomItems(NUM_SOCKETS);
+        rounds = InitializeRounds();
+
+        StartNewRound();
+    }
+
+    private void StartNewRound()
+    {
+        // Win
+        if (roundIndex == NUM_ROUNDS)
+        {
+            return;
+        }
+
+        var roundSockets = rounds[roundIndex];
         
-        Debug.Log(new string(characters));
-        Debug.Log(new string(socketChars));
+        var characters = possibleCharacters.ToCharArray().GetRandomItems(roundSockets.Length * 2);
+        var socketChars = characters.GetRandomItems(roundSockets.Length);
 
         foreach (var character in characters)
         {
             GenerateVacuumTube(character);
         }
 
-        for (var i = 0; i < NUM_SOCKETS; i++)
+        for (var i = 0; i < roundSockets.Length; i++)
         {
-            sockets.transform.GetChild(i).GetComponent<Socket>().Initialize(socketChars[i]);
+            roundSockets[i].GetComponent<Socket>().Initialize(socketChars[i]);
         }
     }
 
-    public void newLockedSocket()
+    public void NewLockedSocket()
     {
-        if (++lockedSocketCount == NUM_SOCKETS)
+        // Win round
+        if (++lockedSocketCount == rounds[roundIndex].Length)
         {
-            for (var i = 0; i < 200; i++)
-            {
-                GenerateVacuumTube((char) Random.Range(0, 128));
-            }
+            socketedVacuumTubesAnimator.SetTrigger(WinRound);
+
+            lockedSocketCount = 0;
+            roundIndex++;
+            StartCoroutine(StartNewRoundAfterHalfASecond());
         }
+    }
+
+    private IEnumerator StartNewRoundAfterHalfASecond()
+    {
+        yield return new WaitForSeconds(1.1f);
+        StartNewRound();
     }
 
     private void GenerateVacuumTube(char character)
     {
         var position = transform.position;
         var x = position.x + Random.value * 2 - 1;
-        var y = position.y + Random.value + 1;
-        var z = position.z + Random.value;
+        var y = position.y - .4f;
+        var z = position.z + Random.value + .5f;
 
         var newTube = Instantiate(vacuumTubePrefab, new Vector3(x, y, z), Random.rotation);
         newTube.transform.SetParent(vacuumTubes.transform);
 
         newTube.GetComponent<VacuumTube>().Initialize(character);
+    }
+    
+    private Transform[][] InitializeRounds()
+    {
+        var roundOneSockets = new[]
+        {
+            sockets.transform.GetChild(2), sockets.transform.GetChild(3)
+        };
+        
+        var roundTwoSockets = new[]
+        {
+            sockets.transform.GetChild(1), sockets.transform.GetChild(2),
+            sockets.transform.GetChild(3), sockets.transform.GetChild(4),
+        };
+
+        var roundThreeSockets = new Transform[6];
+        for (var i = 0; i < NUM_SOCKETS; i++)
+        {
+            roundThreeSockets[i] = sockets.transform.GetChild(i);
+        }
+
+        return new[] {roundOneSockets, roundTwoSockets, roundThreeSockets};
     }
 }

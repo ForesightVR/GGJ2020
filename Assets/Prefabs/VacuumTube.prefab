@@ -255,20 +255,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!136 &4248170960318552143
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 32992686532294702}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.05723425
-  m_Height: 0.32722548
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.3361195, z: 0.28175992}
 --- !u!1 &4420857737788967265
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,11 +552,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tube
       objectReference: {fileID: 0}
-    - target: {fileID: 5109443549745509370, guid: 92aec2959e4c1ca46aa823b42361d060,
-        type: 3}
-      propertyPath: m_TagString
-      value: VacuumTube
-      objectReference: {fileID: 0}
     - target: {fileID: 8120898387196969449, guid: 92aec2959e4c1ca46aa823b42361d060,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -626,29 +607,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8120898387196969449, guid: 92aec2959e4c1ca46aa823b42361d060,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.83
-      objectReference: {fileID: 0}
-    - target: {fileID: 8120898387196969449, guid: 92aec2959e4c1ca46aa823b42361d060,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.83
-      objectReference: {fileID: 0}
-    - target: {fileID: 8120898387196969449, guid: 92aec2959e4c1ca46aa823b42361d060,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.83
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92aec2959e4c1ca46aa823b42361d060, type: 3}
---- !u!1 &32992686532294702 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5109443549745509370, guid: 92aec2959e4c1ca46aa823b42361d060,
-    type: 3}
-  m_PrefabInstance: {fileID: 5088317136851209172}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3904180473658051133 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8120898387196969449, guid: 92aec2959e4c1ca46aa823b42361d060,

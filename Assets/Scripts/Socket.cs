@@ -1,5 +1,4 @@
-﻿using OuterRimStudios.Utilities;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
@@ -7,6 +6,7 @@ public class Socket : MonoBehaviour
 {
     public Panel panel;
     public TextMeshProUGUI text;
+    public GameObject socketedVacuumTubes;
     private char character;
 
     public void Initialize(char character)
@@ -15,33 +15,36 @@ public class Socket : MonoBehaviour
         text.SetText(character.ToString());
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collider)
     {
-        if (!other.CompareTag("VacuumTube"))
+        if (!collider.CompareTag("VacuumTube"))
         {
             return;
         }
      
-        var otherObject = other.gameObject;
-        var otherComponentParent = otherObject.GetComponentInParent<VacuumTube>();
+        var vacuumTubeCollider = collider.gameObject;
+        var vacuumTubeScript = vacuumTubeCollider.GetComponentInParent<VacuumTube>();
         
-        if (character == otherComponentParent.character)
+        if (character == vacuumTubeScript.character)
         {
-            var parent = otherObject.transform.parent;
-            parent.SetParent(transform);
-            
-            // Disable collision/throwable/gravity
-            other.enabled = false;
-            otherComponentParent.GetComponent<Throwable>().enabled = false;
+            collider.enabled = false;
+            vacuumTubeScript.GetComponent<Throwable>().enabled = false;
 
-            var rigidBody = otherComponentParent.GetComponent<Rigidbody>();
+            var rigidBody = vacuumTubeScript.GetComponent<Rigidbody>();
             rigidBody.useGravity = false;
-            rigidBody.isKinematic = false;
-            
-            parent.localPosition = new Vector3(0, 0.12f, 0);
-            parent.localRotation = Quaternion.Euler(0, 90, 0);
+            rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+         
+            var vacuumTube = vacuumTubeCollider.transform.parent;
 
-            panel.newLockedSocket();
+            // Temporarily set the parent to the socket so positioning is simple
+            vacuumTube.SetParent(transform);
+            vacuumTube.localPosition = new Vector3(0, 0.12f, 0);
+            vacuumTube.localRotation = Quaternion.Euler(0, -90, 0);
+
+            vacuumTube.SetParent(socketedVacuumTubes.transform);
+
+            // Let the panel know we've locked a tube to a socket
+            panel.NewLockedSocket();
         }
     }
 }

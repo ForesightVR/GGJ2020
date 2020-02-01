@@ -18,11 +18,6 @@ public class PowerPanel : MonoBehaviour
     List<string> generatedSymbols = new List<string>();
     PowerManager powerManager;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     public void Init(PowerManager powerManager)
     {
@@ -60,21 +55,28 @@ public class PowerPanel : MonoBehaviour
 
     public void CheckButton(string symbol)
     {
+        if (symbolIndex >= generatedSymbols.Count) return;
+
+        foreach (string s in generatedSymbols)
+            Debug.Log(s);
+
         if (generatedSymbols[symbolIndex] == symbol)
         {
+            Debug.Log("Symbol matches");
             //they match and increment
 
-            if(symbolIndex < generatedSymbols.Count)
+            if(symbolIndex < generatedSymbols.Count -1)
             {
+                Debug.Log("Increment");
                 symbolIndex++;
             }
             else
-            {
                 powerManager.EndPanel();
-            }
         }
         else
         {
+            Debug.Log("Symbols don't match! " + "Selected Symbol: " + symbol + " Symbol I was looking for: " + generatedSymbols[symbolIndex]);
+            symbolIndex = 0;
             GenerateSymbols();
         }
     }

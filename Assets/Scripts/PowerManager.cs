@@ -16,13 +16,17 @@ public class PowerManager : MonoBehaviour
 
     public void ActivateNextPanel() 
     {
-        if(currentPanel <= powerPanels.Count)
+        Debug.LogError("Activate Next Panel");
+        if(currentPanel < powerPanels.Count - 1)
         {
+            powerPanels[currentPanel].gameObject.SetActive(false);
             currentPanel++;
             StartPanel(currentPanel);
         }
         else
         {
+            powerPanels[currentPanel].gameObject.SetActive(false);
+            Debug.Log("Puzzle Complete");
             //PuzzleComplete();
         }
     }
@@ -32,5 +36,8 @@ public class PowerManager : MonoBehaviour
         powerPanels[panelIndex].Init(this);
     }
 
-    public void EndPanel() { }
+    public void EndPanel()
+    {
+        ActivateNextPanel();
+    }
 }

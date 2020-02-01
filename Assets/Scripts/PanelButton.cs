@@ -17,6 +17,11 @@ public class PanelButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        parentPanel.CheckButton(symbol.text);
+
+        if(other.tag.Equals("Finger"))
+        {
+            Debug.Log("Triggered by " + other.name + " symbol: " + symbol.text);
+            parentPanel.CheckButton(symbol.text);
+        }
     }
 }

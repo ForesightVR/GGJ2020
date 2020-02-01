@@ -9,43 +9,39 @@ public class PowerPanel : MonoBehaviour
     public int symbolAmt;
     public int panelBtnAmt;
     public float offsetScale;
+    public float timer = 5f;
 
     public GameObject panelBtnArea;
-    public TextMeshProUGUI symbolArea;
-    public Animator animator;
+    public TextMeshProUGUI symbolArea;    
     public MeshRenderer buttonRenderer;
     public PowerPanelButton panelButton;
+    
+    List<string> generatedSymbols = new List<string>();
+    public List<GameObject> buttons = new List<GameObject>();
+
+    Animator animator;
+    PowerManager powerManager;
+    PowerPanelButton powerBtn;
+    Coroutine turnOffCoroutine;
 
     int symbolIndex;
     char[] possibleSymbols;
-    List<string> generatedSymbols = new List<string>();
-    PowerManager powerManager;
-    List<GameObject> buttons = new List<GameObject>();
+
+    private void Awake()
+    {
+        symbolArea.gameObject.SetActive(false);
+        animator = GetComponent<Animator>();
+        powerBtn = buttonRenderer.gameObject.GetComponent<PowerPanelButton>();
+    }
 
     public void Init(PowerManager powerManager)
     {
-        symbolIndex = 0;
-        animator.SetTrigger("Open");
-        this.powerManager = powerManager;
-       
-        //Generate Symbols
-        possibleSymbols = powerManager.possibleSymbols.ToCharArray().GetRandomItems(panelBtnAmt);
+        symbolIndex = 0;        
+        this.powerManager = powerManager;    
 
         GenerateSymbols();
-
-        //Generate Buttons
-        float panelAreaWidth = panelBtnArea.transform.localScale.x / offsetScale;
-        float incrementValue = panelAreaWidth / (panelBtnAmt - 1);
-
-        float startingValue = -(panelAreaWidth / 2);
-        for (int i = 0; i < panelBtnAmt; i++)
-        {
-            var spawnedObj = Instantiate(powerManager.panelButton, panelBtnArea.transform);
-            spawnedObj.transform.localPosition = new Vector2(startingValue, 0);
-            spawnedObj.GetComponent<PanelButton>().Init(this, possibleSymbols[i].ToString());
-            buttons.Add(spawnedObj);
-            startingValue += incrementValue;
-        }
+        MatchButtonsToSymbols();
+        PrepareButton();
     }
 
     public void PrepareButton()
@@ -56,6 +52,8 @@ public class PowerPanel : MonoBehaviour
 
     void GenerateSymbols()
     {
+        possibleSymbols = powerManager.possibleSymbols.ToCharArray().GetRandomItems(panelBtnAmt);
+
         generatedSymbols.Clear();
         symbolArea.text = "";
         for (int i = 0; i < symbolAmt; i++)
@@ -63,6 +61,38 @@ public class PowerPanel : MonoBehaviour
             generatedSymbols.Add(possibleSymbols[Random.Range(0, possibleSymbols.Length - 1)].ToString());
             symbolArea.text += generatedSymbols[i];
         }
+
+        symbolArea.gameObject.SetActive(true);
+    }
+
+    void MatchButtonsToSymbols()
+    {
+        int index = 0;
+        foreach (GameObject go in buttons)
+        {
+            go.GetComponent<PanelButton>().Init(this, possibleSymbols[index].ToString());
+            index++;
+        }
+    }
+    public void TurnOnPanel()
+    {
+        //lightningEffect
+        powerBtn.GetComponent<Collider>().enabled = false;
+        animator.SetTrigger("Open");
+        symbolArea.gameObject.SetActive(false);
+
+        foreach (GameObject button in buttons)
+        {
+            button.GetComponent<Collider>().enabled = true;
+        }
+
+        turnOffCoroutine = StartCoroutine(TurnOffPanel());
+    }
+
+    IEnumerator TurnOffPanel()
+    {
+        yield return new WaitForSeconds(timer);
+        Failed();
     }
 
     public void CheckButton(string symbol)
@@ -74,7 +104,6 @@ public class PowerPanel : MonoBehaviour
 
         if (generatedSymbols[symbolIndex] == symbol)
         {
-
             if(symbolIndex < generatedSymbols.Count -1)
             {
                 symbolIndex++;
@@ -92,14 +121,16 @@ public class PowerPanel : MonoBehaviour
 
     void Failed()
     {
-        foreach (GameObject go in buttons)
-            Destroy(go);
-        buttons.Clear();
-    }
+        StopCoroutine(turnOffCoroutine);
+        symbolIndex = 0;
+        powerBtn.GetComponent<Collider>().enabled = true;
+        GenerateSymbols();
+        MatchButtonsToSymbols();
+        animator.SetTrigger("Close");
 
-    public void TurnOnPanel()
-    {
-        //lightningEffect
-
+        foreach (GameObject button in buttons)
+        {
+            button.GetComponent<Collider>().enabled = false;
+        }
     }
 }

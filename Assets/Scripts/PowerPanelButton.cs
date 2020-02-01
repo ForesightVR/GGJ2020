@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class PowerPanelButton : MonoBehaviour
 {
-    public PowerManager powerManager;
-
     PowerPanel powerPanel;
     bool isReady;
+    Animator animator;
+
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     public void Init(PowerPanel powerPanel)
     {
@@ -17,10 +22,13 @@ public class PowerPanelButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("isReady = " + isReady);
         if (!isReady) return;
         if(other.tag.Equals("Finger"))
         {
-            powerManager.StartPanel(powerManager.GetIndex(powerPanel));
+            Debug.Log("Touch!");
+
+            powerPanel.TurnOnPanel();
         }
     }
 }

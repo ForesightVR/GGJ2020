@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PowerManager : MonoBehaviour
 {
@@ -11,16 +12,16 @@ public class PowerManager : MonoBehaviour
     int currentPanel;
     void Start()
     {
-        powerPanels[0].PrepareButton();
+        StartPanel(0);
     }
 
     public void ActivateNextPanel() 
     {
         if(currentPanel < powerPanels.Count - 1)
-        {
+        {           
             powerPanels[currentPanel].gameObject.SetActive(false);
             currentPanel++;
-            powerPanels[currentPanel].PrepareButton();
+            StartPanel(currentPanel);
             //StartPanel(currentPanel);
         }
         else
@@ -38,12 +39,14 @@ public class PowerManager : MonoBehaviour
 
     public int GetIndex(PowerPanel panel)
     {
-        for(int i = 0; i < powerPanels.Count; i++)
+        return powerPanels.IndexOf(panel);
+
+        /*for(int i = 0; i < powerPanels.Count; i++)
         {
             if (powerPanels[i] == panel)
                 return i;
         }
-        return 0;
+        return 0;*/
     }
 
     public void EndPanel()

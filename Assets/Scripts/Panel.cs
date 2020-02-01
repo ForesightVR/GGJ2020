@@ -33,12 +33,16 @@ public class Panel : MonoBehaviour
         // Win
         if (roundIndex == NUM_ROUNDS)
         {
+            foreach (Transform socket in sockets.transform)
+            {
+                socket.GetComponent<Socket>().character = ' ';
+            }
             return;
         }
 
         var roundSockets = rounds[roundIndex];
         
-        var characters = possibleCharacters.ToCharArray().GetRandomItems(roundSockets.Length * 2);
+        var characters = possibleCharacters.ToCharArray().GetRandomItems(roundSockets.Length + 2);
         var socketChars = characters.GetRandomItems(roundSockets.Length);
 
         foreach (var character in characters)
@@ -48,7 +52,7 @@ public class Panel : MonoBehaviour
 
         for (var i = 0; i < roundSockets.Length; i++)
         {
-            roundSockets[i].GetComponent<Socket>().Initialize(socketChars[i]);
+            roundSockets[i].GetComponent<Socket>().character = socketChars[i];
         }
     }
 
@@ -61,11 +65,11 @@ public class Panel : MonoBehaviour
 
             lockedSocketCount = 0;
             roundIndex++;
-            StartCoroutine(StartNewRoundAfterHalfASecond());
+            StartCoroutine(DelayedStartNewRound());
         }
     }
 
-    private IEnumerator StartNewRoundAfterHalfASecond()
+    private IEnumerator DelayedStartNewRound()
     {
         yield return new WaitForSeconds(1.1f);
         StartNewRound();

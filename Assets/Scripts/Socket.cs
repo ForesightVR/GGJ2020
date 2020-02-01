@@ -7,12 +7,16 @@ public class Socket : MonoBehaviour
     public Panel panel;
     public TextMeshProUGUI text;
     public GameObject socketedVacuumTubes;
-    private char character;
 
-    public void Initialize(char character)
-    { 
-        this.character = character;
-        text.SetText(character.ToString());
+    private char _character;
+    public char character
+    {
+        get => _character;
+        set
+        {
+            _character = value;
+            text.SetText(value.ToString());
+        }
     }
 
     private void OnTriggerEnter(Collider collider)

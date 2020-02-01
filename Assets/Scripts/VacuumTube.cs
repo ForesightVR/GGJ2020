@@ -1,16 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class VacuumTube : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private char character;
+    
+    public void Initialize(char character)
+    { 
+        this.character = character;
     }
 
-    // Update is called once per frame
     void Update()
     {
         

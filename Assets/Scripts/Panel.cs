@@ -1,33 +1,34 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using OuterRimStudios.Utilities;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Panel : MonoBehaviour
 {
+    private int NUM_SOCKETS = 6;
+    private int NUM_VACUUM_TUBES = 20;
+    
     public GameObject sockets;
     public GameObject vacuumTubes;
     public GameObject vacuumTubePrefab;
+    public string possibleCharacters;
     
-    // Start is called before the first frame update
     void Start()
     {
-        for (var i = 0; i < 50; i++)
+        var characters = possibleCharacters.ToCharArray().GetRandomItems(NUM_VACUUM_TUBES);
+        var socketChars = characters.GetRandomItems(NUM_SOCKETS);
+
+        foreach (var character in characters)
         {
-            GenerateVacuumTube();
+            GenerateVacuumTube(character);
         }
-        
-        
+
+        for (var i = 0; i < NUM_SOCKETS; i++)
+        {
+            sockets.transform.GetChild(i).GetComponent<Socket>().Initialize(socketChars[i]);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // GenerateVacuumTube();
-    }
-
-    private void GenerateVacuumTube()
+    private void GenerateVacuumTube(char character)
     {
         var position = transform.position;
         var x = position.x + Random.value * 2 - 1;
@@ -35,7 +36,8 @@ public class Panel : MonoBehaviour
         var z = position.z + Random.value;
 
         var newTube = Instantiate(vacuumTubePrefab, new Vector3(x, y, z), Quaternion.identity);
-
         newTube.transform.SetParent(vacuumTubes.transform);
+
+        newTube.GetComponent<VacuumTube>().Initialize(character);
     }
 }

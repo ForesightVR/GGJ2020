@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4381023143339453711}
   - component: {fileID: 4381023157372551489}
   - component: {fileID: 4381023143749366575}
+  - component: {fileID: 6289837179688929281}
   m_Layer: 0
   m_Name: VacuumTube
   m_TagString: Untagged
@@ -269,6 +270,18 @@ MonoBehaviour:
   previewPoseSelection: 0
   blendingBehaviours: []
   scale: 1
+--- !u!114 &6289837179688929281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4420857737788967265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a22702bce0a1204ab1a2fc5e7b0c914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4420857738289396603
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +310,7 @@ Transform:
   m_GameObject: {fileID: 4420857738289396603}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
   m_Children: []
   m_Father: {fileID: 4420198152705612299}
   m_RootOrder: 0

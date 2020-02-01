@@ -1,18 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using OuterRimStudios.Utilities;
+using TMPro;
 using UnityEngine;
 
 public class Socket : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public Panel panel;
+    public TextMeshProUGUI text;
+    private char character;
+
+    public void Initialize(char character)
+    { 
+        this.character = character;
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        character = panel.possibleCharacters.ToCharArray().GetRandomItem();
+        text.SetText(character.ToString());
     }
 }

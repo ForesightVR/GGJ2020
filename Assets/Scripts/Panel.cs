@@ -82,9 +82,9 @@ public class Panel : MonoBehaviour
     private void GenerateVacuumTube(char character)
     {
         var position = transform.position;
-        var x = position.x + Random.value * 2 - 1;
-        var y = position.y - .4f;
-        var z = position.z + Random.value + .5f;
+        var x = position.x + Random.value * 1.5f - 0.75f;
+        var y = position.y - .3f;
+        var z = position.z;
 
         var newTube = Instantiate(vacuumTubePrefab, new Vector3(x, y, z), Random.rotation);
         newTube.transform.SetParent(vacuumTubes.transform);

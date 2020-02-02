@@ -8,6 +8,8 @@ TagManager:
   - FxTemporaire
   - Finger
   - VacuumTube
+  - Reflector
+  - Crystal
   layers:
   - Default
   - TransparentFX
@@ -17,9 +19,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - LaserWall
+  - Reflector
+  - Crystal
   - 
   - 
   - 

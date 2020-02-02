@@ -6,13 +6,7 @@ public class PowerPanelButton : MonoBehaviour
 {
     PowerPanel powerPanel;
     bool isReady;
-    Animator animator;
-
-
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
+    public Animator animator;
 
     public void Init(PowerPanel powerPanel)
     {
@@ -25,6 +19,7 @@ public class PowerPanelButton : MonoBehaviour
         if (!isReady) return;
         if(other.tag.Equals("Finger"))
         {
+            animator.SetTrigger("ActivateConsoleButton");
             powerPanel.TurnOnPanel();
         }
     }

@@ -11,14 +11,16 @@ public class PanelButton : MonoBehaviour
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInParent<Animator>();
     }
 
-    public void Init(PowerPanel parentPanel,  string symbol) 
+    public void Init(PowerPanel parentPanel,  string _symbol) 
     {
-        this.symbol = GetComponentInChildren<TextMeshProUGUI>();
+        symbol = GetComponentInChildren<TextMeshProUGUI>();
         this.parentPanel = parentPanel;
-        this.symbol.text = symbol;
+        symbol.text = _symbol;
+
+        Debug.Log(symbol.text + " --- " + _symbol);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,7 +28,7 @@ public class PanelButton : MonoBehaviour
         if(other.tag.Equals("Finger"))
         {
             parentPanel.CheckButton(symbol.text);
-            animator.SetTrigger("pressed");
+            animator.SetTrigger("Pressed");
         }
     }
 }

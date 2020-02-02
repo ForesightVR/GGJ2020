@@ -9,6 +9,9 @@ public class Crystal : MonoBehaviour
     public float lerpSpeed = .001f;
     public PowerManager powerManager;
 
+    public GameObject[] dummies;
+    public GameObject[] shards;
+
     Color originalColor;
     Coroutine overheatCrystal;
     bool overheating;
@@ -55,11 +58,13 @@ public class Crystal : MonoBehaviour
 
     public void Explode()
     {
-       // GetComponent<MeshRenderer>().material.color = Color.red;
-        Debug.Log("Kaboom!");
         powerManager.PowerDisabled();
         powerManager.SetPowerRoomActive(true);
+
+        foreach (GameObject dummy in dummies)
+            dummy.SetActive(false);
+
+        foreach (GameObject shard in shards)
+            shard.SetActive(true);
     }
-
-
 }

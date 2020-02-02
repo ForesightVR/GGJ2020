@@ -19,8 +19,6 @@ public class PanelButton : MonoBehaviour
         symbol = GetComponentInChildren<TextMeshProUGUI>();
         this.parentPanel = parentPanel;
         symbol.text = _symbol;
-
-        Debug.Log(symbol.text + " --- " + _symbol);
     }
 
     private void OnTriggerEnter(Collider other)

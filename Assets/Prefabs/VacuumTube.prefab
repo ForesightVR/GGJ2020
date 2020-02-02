@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 54238140}
   - component: {fileID: 54238142}
   - component: {fileID: 54238141}
-  m_Layer: 5
+  m_Layer: 16
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 694044316}
   - component: {fileID: 694044315}
   - component: {fileID: 694044314}
-  m_Layer: 5
+  m_Layer: 16
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 4381023157372551489}
   - component: {fileID: 4381023143749366575}
   - component: {fileID: 6289837179688929281}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: VacuumTube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -547,10 +547,40 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4420198152705612299}
     m_Modifications:
+    - target: {fileID: 1038366455364383285, guid: 92aec2959e4c1ca46aa823b42361d060,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165479374251948904, guid: 92aec2959e4c1ca46aa823b42361d060,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3431798389074927480, guid: 92aec2959e4c1ca46aa823b42361d060,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 5109443549745509370, guid: 92aec2959e4c1ca46aa823b42361d060,
         type: 3}
       propertyPath: m_Name
       value: Tube
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109443549745509370, guid: 92aec2959e4c1ca46aa823b42361d060,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326571735807022728, guid: 92aec2959e4c1ca46aa823b42361d060,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7577863402510207319, guid: 92aec2959e4c1ca46aa823b42361d060,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8120898387196969449, guid: 92aec2959e4c1ca46aa823b42361d060,
         type: 3}

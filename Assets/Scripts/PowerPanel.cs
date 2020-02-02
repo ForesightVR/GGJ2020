@@ -116,7 +116,6 @@ public class PowerPanel : MonoBehaviour
     public void CheckButton(string symbol)
     {
         if (symbolIndex >= generatedSymbols.Count) return;
-        //Debug.Log("Looking for: " + generatedSymbols[symbolIndex] + " --- " + " You pressed: " + symbol);
 
         if (generatedSymbols[symbolIndex] == symbol)
         {

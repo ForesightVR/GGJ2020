@@ -26,8 +26,6 @@ public class Ring : MonoBehaviour
             foreach (MeshRenderer rend in meshRenderers)
                 rend.material.color = Color.Lerp(rend.material.color, Color.red, .25f * Time.deltaTime);
         }
-
-        Debug.Log(name + " " + overheating);
     }
 
     public void StartOverheat()

@@ -58,14 +58,13 @@ public class PowerManager : MonoBehaviour
         {
             powerPanels[currentPanel].gameObject.SetActive(false);
             PowerEnabled();
+            SetCockpitActive(true);
+            SetCellActive(false);
             doorAnimator.SetTrigger("Open");
-            Debug.Log("Puzzle Complete");
         }
     }
-
     public void RingDisabled()
     {
-        Debug.Log("Ring Disabled");
         disabledRings++;
         
         if(disabledRings >= 4)
@@ -76,8 +75,6 @@ public class PowerManager : MonoBehaviour
 
     public void PowerDisabled()
     {
-        SetCellActive(true);
-        SetCockpitActive(true);
         laserDoor.SetActive(false);
         foreach (GameObject go in disabledPowerSources)
             go.SetActive(false);
@@ -88,8 +85,6 @@ public class PowerManager : MonoBehaviour
 
     public void PowerEnabled()
     {
-        SetCellActive(false);
-        SetCockpitActive(false);
         laserDoor.SetActive(true);
         foreach (GameObject go in disabledPowerSources)
             go.SetActive(true);
@@ -99,7 +94,7 @@ public class PowerManager : MonoBehaviour
             poweredObject.renderer.material = powerSoruceMaterial;
     }
 
-    void SetCellActive(bool state)
+    public void SetCellActive(bool state)
     {
         cellTeleportArea.locked = !state;
 
@@ -115,7 +110,7 @@ public class PowerManager : MonoBehaviour
             teleportPoint.locked = !state;
     }
 
-    void SetCockpitActive(bool state)
+    public void SetCockpitActive(bool state)
     {
         cockpitTeleportArea.locked = !state;
 

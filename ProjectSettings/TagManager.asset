@@ -29,8 +29,8 @@ TagManager:
   - Player
   - Ring
   - Blocker
-  - 
-  - 
+  - LaserCollision
+  - VacTube
   - 
   - 
   - 

@@ -23,7 +23,7 @@ public class CrystalMaker : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(numShardsInMaker);
+        //Debug.Log(numShardsInMaker);
     }
 
     private void OnTriggerExit(Collider other)

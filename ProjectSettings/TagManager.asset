@@ -9,6 +9,8 @@ TagManager:
   - Finger
   - VacuumTube
   - CrystalShard
+  - Reflector
+  - Crystal
   layers:
   - Default
   - TransparentFX
@@ -18,9 +20,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - LaserWall
+  - Crystal
+  - Reflector
   - 
   - 
   - 

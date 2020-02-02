@@ -3258,8 +3258,8 @@ MonoBehaviour:
   - {fileID: 1504775456}
   - {fileID: 1118640535}
   - {fileID: 1543882619}
-  pistonOpen: {fileID: 8300000, guid: 0b0e0fec2af7a014eaf86ece8ac6052a, type: 3}
-  pistonClose: {fileID: 8300000, guid: a07c85f83e3d05f428113568b64fb0d2, type: 3}
+  pistonOpen: {fileID: 0}
+  pistonClose: {fileID: 0}
 --- !u!1 &187795445
 GameObject:
   m_ObjectHideFlags: 0
@@ -6475,7 +6475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brokenModel: {fileID: 2974612605832927820}
-  source: {fileID: 2974612605832927821}
+  source: {fileID: 0}
 --- !u!65 &429197424
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20212,7 +20212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brokenModel: {fileID: 1637849519604378978}
-  source: {fileID: 1637849519604378979}
+  source: {fileID: 0}
 --- !u!65 &1418871499
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24663,7 +24663,7 @@ PrefabInstance:
     - target: {fileID: 2526035753255109140, guid: 4ce37d66ce2e08347a8387eda6fcfe09,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.602
+      value: -4.63
       objectReference: {fileID: 0}
     - target: {fileID: 2526035753255109140, guid: 4ce37d66ce2e08347a8387eda6fcfe09,
         type: 3}
@@ -25707,8 +25707,8 @@ MonoBehaviour:
   - {fileID: 438320195}
   - {fileID: 1891324312}
   - {fileID: 441568888}
-  pistonOpen: {fileID: 8300000, guid: 0b0e0fec2af7a014eaf86ece8ac6052a, type: 3}
-  pistonClose: {fileID: 8300000, guid: a07c85f83e3d05f428113568b64fb0d2, type: 3}
+  pistonOpen: {fileID: 0}
+  pistonClose: {fileID: 0}
 --- !u!1 &1887088361
 GameObject:
   m_ObjectHideFlags: 0
@@ -29031,8 +29031,8 @@ MonoBehaviour:
   - {fileID: 1421587}
   - {fileID: 585470730}
   - {fileID: 2085776713}
-  pistonOpen: {fileID: 8300000, guid: 0b0e0fec2af7a014eaf86ece8ac6052a, type: 3}
-  pistonClose: {fileID: 8300000, guid: a07c85f83e3d05f428113568b64fb0d2, type: 3}
+  pistonOpen: {fileID: 0}
+  pistonClose: {fileID: 0}
 --- !u!1 &2133905490
 GameObject:
   m_ObjectHideFlags: 0
@@ -37218,8 +37218,8 @@ MonoBehaviour:
   - {fileID: 1096940168}
   - {fileID: 1411529826133279356}
   - {fileID: 47137014}
-  pistonOpen: {fileID: 8300000, guid: 0b0e0fec2af7a014eaf86ece8ac6052a, type: 3}
-  pistonClose: {fileID: 8300000, guid: a07c85f83e3d05f428113568b64fb0d2, type: 3}
+  pistonOpen: {fileID: 0}
+  pistonClose: {fileID: 0}
 --- !u!95 &5655863447579175302
 Animator:
   serializedVersion: 3

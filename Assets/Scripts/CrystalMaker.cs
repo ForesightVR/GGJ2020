@@ -1,10 +1,15 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CrystalMaker : MonoBehaviour
 {
+    public Animator createCrystalAnimator;
+    public GameObject shards;
+    
+    
     private int NUM_SHARDS = 3;
     private int numShardsInMaker = 0;
+    private bool animationAlreadyTriggered = false;
+    private static readonly int AllThreeShardsInBucket = Animator.StringToHash("AllThreeShardsInBucket");
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,9 +20,17 @@ public class CrystalMaker : MonoBehaviour
 
         if (++numShardsInMaker == NUM_SHARDS)
         {
-            var pos = transform.position;
-            
-            // Instantiate(SuperShard)
+            foreach (Transform shard in shards.transform)
+            {
+                shard.GetComponent<Rigidbody>().isKinematic = true;
+            }
+
+            if (!animationAlreadyTriggered)
+            {
+                createCrystalAnimator.SetTrigger(AllThreeShardsInBucket);
+                animationAlreadyTriggered = true;
+                Debug.Log("all three shards in bucket");
+            }
         } 
     }
 

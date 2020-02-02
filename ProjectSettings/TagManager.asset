@@ -8,6 +8,7 @@ TagManager:
   - FxTemporaire
   - Finger
   - VacuumTube
+  - CrystalShard
   layers:
   - Default
   - TransparentFX

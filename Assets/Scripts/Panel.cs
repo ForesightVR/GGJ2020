@@ -10,8 +10,10 @@ public class Panel : MonoBehaviour
 
     public GameObject sockets;
     public GameObject vacuumTubes;
+    public Animator buttonPanel;
     public Animator socketedVacuumTubesAnimator;
-    
+
+    public WarpButton warpButton;
     public GameObject vacuumTubePrefab;
     public string possibleCharacters;
 
@@ -37,6 +39,8 @@ public class Panel : MonoBehaviour
             {
                 socket.GetComponent<Socket>().character = ' ';
             }
+            buttonPanel.SetTrigger("OpenPanel");
+            warpButton.Activate();
             return;
         }
 

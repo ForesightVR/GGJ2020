@@ -12094,7 +12094,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 8.84e-42, y: 1.01e-43, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 3.0092666e-36, y: 1.009742e-28, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -15856,7 +15856,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.31
+      value: -3.44
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -17552,6 +17552,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 404912717431927032, guid: e6ec0af96cedfb945a34279a1a7d7a85,
+        type: 3}
+      propertyPath: m_Name
+      value: Button
+      objectReference: {fileID: 0}
     - target: {fileID: 532245676069384491, guid: e6ec0af96cedfb945a34279a1a7d7a85,
         type: 3}
       propertyPath: m_CastShadows
@@ -17572,11 +17577,46 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6947d41640233a647b4434376433c24c, type: 2}
+    - target: {fileID: 4003516286565176871, guid: e6ec0af96cedfb945a34279a1a7d7a85,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000023714218
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003516286565176871, guid: e6ec0af96cedfb945a34279a1a7d7a85,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003516286565176871, guid: e6ec0af96cedfb945a34279a1a7d7a85,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.38268346
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003516286565176871, guid: e6ec0af96cedfb945a34279a1a7d7a85,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.0000000915411
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003516286565176871, guid: e6ec0af96cedfb945a34279a1a7d7a85,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003516286565176871, guid: e6ec0af96cedfb945a34279a1a7d7a85,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7948269988992259322, guid: e6ec0af96cedfb945a34279a1a7d7a85,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6947d41640233a647b4434376433c24c, type: 2}
+    - target: {fileID: 8681831168455463118, guid: e6ec0af96cedfb945a34279a1a7d7a85,
+        type: 3}
+      propertyPath: m_Name
+      value: Glass
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6ec0af96cedfb945a34279a1a7d7a85, type: 3}
 --- !u!4 &1167554454 stripped
@@ -17585,6 +17625,63 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1167554453}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1167554455 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 404912717431927032, guid: e6ec0af96cedfb945a34279a1a7d7a85,
+    type: 3}
+  m_PrefabInstance: {fileID: 1167554453}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1167554456 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3910975313287520614, guid: e6ec0af96cedfb945a34279a1a7d7a85,
+    type: 3}
+  m_PrefabInstance: {fileID: 1167554453}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1167554457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167554455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4720bc008514f7c488bbdc1b87f01039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  warpEffect: {fileID: 1535721403}
+--- !u!95 &1167554458
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167554456}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eece1df1478ba1940a6c4e8c49a043a0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &1167554459
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167554455}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.05580511, y: 0.05580511, z: 0.02364346}
+  m_Center: {x: 0, y: 0.00000047683716, z: 0.0118219685}
 --- !u!1 &1168897410 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 4a4868f04e936534385cf235d5f7308e,
@@ -21593,7 +21690,7 @@ GameObject:
   - component: {fileID: 1535721405}
   - component: {fileID: 1535721404}
   m_Layer: 0
-  m_Name: GameOver
+  m_Name: WarpEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24608,6 +24705,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2526035753255109141, guid: 4ce37d66ce2e08347a8387eda6fcfe09,
+        type: 3}
+      propertyPath: buttonPanel
+      value: 
+      objectReference: {fileID: 1167554458}
+    - target: {fileID: 2526035753255109141, guid: 4ce37d66ce2e08347a8387eda6fcfe09,
+        type: 3}
+      propertyPath: warpButton
+      value: 
+      objectReference: {fileID: 1167554457}
     - target: {fileID: 2526035753255109142, guid: 4ce37d66ce2e08347a8387eda6fcfe09,
         type: 3}
       propertyPath: m_Name

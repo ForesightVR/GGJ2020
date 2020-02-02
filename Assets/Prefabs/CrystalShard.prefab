@@ -209,7 +209,7 @@ MonoBehaviour:
         m_MethodName: set_material
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2100000, guid: 7e90f10e44a186a49a00679d068515ed,
+          m_ObjectArgument: {fileID: 2100000, guid: 31fb90b5d0e3ef146a4dc074dbf28cb5,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
           m_IntArgument: 0
@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 2227049819604527995}
   - component: {fileID: 2203133963549864723}
   - component: {fileID: 2213397842500195373}
-  - component: {fileID: 254297188492268479}
+  - component: {fileID: 1513225532}
   m_Layer: 0
   m_Name: CrystalShardModel
   m_TagString: CrystalShard
@@ -328,7 +328,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7e90f10e44a186a49a00679d068515ed, type: 2}
+  - {fileID: 2100000, guid: 31fb90b5d0e3ef146a4dc074dbf28cb5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -349,8 +349,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &254297188492268479
-MeshCollider:
+--- !u!65 &1513225532
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -359,7 +359,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300002, guid: 56377e28a47008245871ca7b435044c4, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.005857496, y: 0.09417518, z: 0.02759136}
+  m_Center: {x: 0, y: 0, z: 0}

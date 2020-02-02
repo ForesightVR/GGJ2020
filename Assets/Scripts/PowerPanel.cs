@@ -20,6 +20,10 @@ public class PowerPanel : MonoBehaviour
     public List<GameObject> buttons = new List<GameObject>();
     public Animator[] pistons;
 
+    [Space]
+    public AudioClip pistonOpen;
+    public AudioClip pistonClose;
+
     Animator animator;
     PowerManager powerManager;
     PowerPanelButton powerBtn;
@@ -73,7 +77,10 @@ public class PowerPanel : MonoBehaviour
             symbolArea.gameObject.SetActive(true);
 
         foreach (Animator anim in pistons)
+        {
+            anim.GetComponent<AudioSource>().PlayOneShot(pistonOpen);
             anim.SetTrigger("OpenPiston");
+        }
     }
 
     void MatchButtonsToSymbols()
@@ -91,7 +98,10 @@ public class PowerPanel : MonoBehaviour
     {
         if (complete) return;
         foreach (Animator anim in pistons)
+        {
+            anim.GetComponent<AudioSource>().PlayOneShot(pistonClose);
             anim.SetTrigger("ClosePiston");
+        }
         //lightningEffect
         powerBtn.GetComponent<Collider>().enabled = false;
         animator.SetTrigger("OpenPowerPanel");

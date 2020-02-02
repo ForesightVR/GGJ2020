@@ -41,10 +41,6 @@ public class PowerManager : MonoBehaviour
 
     int currentPanel;
     int disabledRings;
-    void Start()
-    {
-        StartPanel(0);
-    }
 
     public void ActivateNextPanel() 
     {

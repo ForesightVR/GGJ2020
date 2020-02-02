@@ -8,6 +8,7 @@ public class Crystal : MonoBehaviour
     public MeshRenderer[] meshRenderers;
     public float lerpSpeed = .001f;
     public PowerManager powerManager;
+    public CrystalMaker crystalMaker;
 
     public GameObject[] dummies;
     public GameObject[] shards;
@@ -69,5 +70,14 @@ public class Crystal : MonoBehaviour
 
         foreach (GameObject shard in shards)
             shard.SetActive(true);
+
+        StartCoroutine(Wait());
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(3);
+        crystalMaker.enabled = true;
+        crystalMaker.GetComponent<Collider>().enabled = true;
     }
 }

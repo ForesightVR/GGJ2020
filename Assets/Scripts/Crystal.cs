@@ -16,8 +16,10 @@ public class Crystal : MonoBehaviour
     Coroutine overheatCrystal;
     bool overheating;
 
+    AudioSource source;
     private void Start()
     {
+        source = GetComponent<AudioSource>();
         originalColor = meshRenderers[0].material.color;
     }
 
@@ -58,6 +60,7 @@ public class Crystal : MonoBehaviour
 
     public void Explode()
     {
+        source.Play();
         powerManager.PowerDisabled();
         powerManager.SetPowerRoomActive(true);
 

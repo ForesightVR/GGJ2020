@@ -12,9 +12,10 @@ public class Ring : MonoBehaviour
     Coroutine overheatRing;
     bool overheating;
     bool disabled;
-
+    AudioSource source;
     private void Start()
     {
+        source = GetComponent<AudioSource>();
         originalColor = meshRenderers[0].material.color;
     }
 
@@ -54,6 +55,7 @@ public class Ring : MonoBehaviour
 
     public void Disable()
     {
+        source.Play();
         foreach (MeshRenderer rend in meshRenderers)
             rend.material.color = Color.black;
         disabled = true;

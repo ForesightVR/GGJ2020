@@ -58,6 +58,7 @@ public class Crystal : MonoBehaviour
        // GetComponent<MeshRenderer>().material.color = Color.red;
         Debug.Log("Kaboom!");
         powerManager.PowerDisabled();
+        powerManager.SetPowerRoomActive(true);
     }
 
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Valve.VR.InteractionSystem;
 
 public class PowerManager : MonoBehaviour
 {
@@ -24,8 +25,20 @@ public class PowerManager : MonoBehaviour
 
     public PoweredObjects[] poweredObjects;
 
-
     public string possibleSymbols;
+
+    [Space]
+    public TeleportArea cellTeleportArea;
+    public TeleportPoint[] cellTeleportPoints;
+
+    [Space]
+    public TeleportArea powerRoomTeleportArea;
+    public TeleportPoint[] powerRoomTeleportPoints;
+
+    [Space]
+    public TeleportArea cockpitTeleportArea;
+    public TeleportPoint[] cockpitTeleportPoints;
+
     int currentPanel;
     int disabledRings;
     void Start()
@@ -63,6 +76,8 @@ public class PowerManager : MonoBehaviour
 
     public void PowerDisabled()
     {
+        SetCellActive(true);
+        SetCockpitActive(true);
         laserDoor.SetActive(false);
         foreach (GameObject go in disabledPowerSources)
             go.SetActive(false);
@@ -73,6 +88,8 @@ public class PowerManager : MonoBehaviour
 
     public void PowerEnabled()
     {
+        SetCellActive(false);
+        SetCockpitActive(false);
         laserDoor.SetActive(true);
         foreach (GameObject go in disabledPowerSources)
             go.SetActive(true);
@@ -80,6 +97,30 @@ public class PowerManager : MonoBehaviour
 
         foreach (PoweredObjects poweredObject in poweredObjects)
             poweredObject.renderer.material = powerSoruceMaterial;
+    }
+
+    void SetCellActive(bool state)
+    {
+        cellTeleportArea.locked = !state;
+
+        foreach (TeleportPoint teleportPoint in cellTeleportPoints)
+            teleportPoint.locked = !state;
+    }
+
+    public void SetPowerRoomActive(bool state)
+    {
+        powerRoomTeleportArea.locked = !state;
+
+        foreach (TeleportPoint teleportPoint in powerRoomTeleportPoints)
+            teleportPoint.locked = !state;
+    }
+
+    void SetCockpitActive(bool state)
+    {
+        cockpitTeleportArea.locked = !state;
+
+        foreach (TeleportPoint teleportPoint in cockpitTeleportPoints)
+            teleportPoint.locked = !state;
     }
 
     public void StartPanel(int panelIndex)

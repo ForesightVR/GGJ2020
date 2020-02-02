@@ -10,6 +10,7 @@ public class Laser : MonoBehaviour
     LineRenderer line;
     Reflector reflector;
     Crystal crystal;
+    Ring ring;
 
     float timer;
 
@@ -38,6 +39,7 @@ public class Laser : MonoBehaviour
         int laserReflected = 1;
         bool isStillDrawing = true;
         bool isHittingCrystal = false;
+        bool isHittingRing = false;
 
         Vector3 laserDirection = transform.forward;
         Vector3 lastLaserPosition = transform.position;
@@ -58,6 +60,36 @@ public class Laser : MonoBehaviour
                     lastLaserPosition = hit.point;
                     laserDirection = Vector3.Reflect(laserDirection, hit.normal);
                 }
+                else if(hit.transform.tag.Equals("Blocker"))
+                {
+                    laserReflected++;
+                    vertexCounter++;
+                    line.positionCount = vertexCounter;
+                    line.SetPosition(vertexCounter - 1, hit.point);
+
+                    isStillDrawing = false;
+                    isHittingCrystal = false;
+                    isHittingRing = false;
+                }
+                else if (hit.transform.tag.Equals("Ring"))
+                {
+                    laserReflected++;
+                    vertexCounter++;
+                    line.positionCount = vertexCounter;
+                    line.SetPosition(vertexCounter - 1, hit.point);
+
+                    Ring thisRing = hit.transform.gameObject.GetComponent<Ring>();
+
+                    if (ring && ring != thisRing)
+                        ring.StopOverheat();
+
+                    ring = thisRing;
+                    ring.StartOverheat();
+
+                    isStillDrawing = false;
+                    isHittingCrystal = false;
+                    isHittingRing = true;
+                }
                 else if (hit.transform.tag.Equals("Crystal"))
                 {
                     laserReflected++;
@@ -72,6 +104,7 @@ public class Laser : MonoBehaviour
                     }
                     isStillDrawing = false;
                     isHittingCrystal = true;
+                    isHittingRing = false;
                 }
                 else
                 {
@@ -97,6 +130,15 @@ public class Laser : MonoBehaviour
             {
                 crystal.StopOverheat();
                 crystal = null;
+            }
+        }
+
+        if (!isHittingRing)
+        {
+            if (ring)
+            {
+                ring.StopOverheat();
+                ring = null;
             }
         }
 

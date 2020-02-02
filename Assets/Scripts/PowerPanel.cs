@@ -27,6 +27,7 @@ public class PowerPanel : MonoBehaviour
 
     int symbolIndex;
     char[] possibleSymbols;
+    bool complete;
 
     private void Awake()
     {
@@ -88,6 +89,7 @@ public class PowerPanel : MonoBehaviour
     }
     public void TurnOnPanel()
     {
+        if (complete) return;
         foreach (Animator anim in pistons)
             anim.SetTrigger("ClosePiston");
         //lightningEffect
@@ -124,7 +126,12 @@ public class PowerPanel : MonoBehaviour
             }
             else
             {
+                StopCoroutine(turnOffCoroutine);
+
+                animator.SetTrigger("ClosePowerPanel");
+                buttonRenderer.material.color = Color.black;
                 powerManager.EndPanel();
+                complete = true;
             }
         }
         else

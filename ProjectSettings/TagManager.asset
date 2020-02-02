@@ -11,6 +11,8 @@ TagManager:
   - CrystalShard
   - Reflector
   - Crystal
+  - Ring
+  - Blocker
   layers:
   - Default
   - TransparentFX
@@ -25,8 +27,8 @@ TagManager:
   - Reflector
   - Post Processing
   - Player
-  - 
-  - 
+  - Ring
+  - Blocker
   - 
   - 
   - 

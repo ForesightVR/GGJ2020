@@ -5,6 +5,7 @@ using UnityEngine;
 public class Crystal : MonoBehaviour
 {
     public float timeToOverwhelm;
+
     Coroutine overheatCrystal;
 
     public void StartOverheat()
@@ -29,7 +30,7 @@ public class Crystal : MonoBehaviour
 
     public void Explode()
     {
-        GetComponent<MeshRenderer>().material.color = Color.red;
+       // GetComponent<MeshRenderer>().material.color = Color.red;
         Debug.Log("Kaboom!");
     }
 

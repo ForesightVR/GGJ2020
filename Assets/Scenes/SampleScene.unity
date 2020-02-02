@@ -9881,6 +9881,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &705553228 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 563261101166870125, guid: 6ba603a1687b3294193190a407581874,
+    type: 3}
+  m_PrefabInstance: {fileID: 1871389355}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &705553230 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 563261101166870120, guid: 6ba603a1687b3294193190a407581874,
+    type: 3}
+  m_PrefabInstance: {fileID: 1871389355}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &719545598
 GameObject:
   m_ObjectHideFlags: 0
@@ -18047,7 +18059,7 @@ PrefabInstance:
     - target: {fileID: 1566778989137090887, guid: 4195164f63ae1a84bb4087bf1dbd8ef5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1566778989137090887, guid: 4195164f63ae1a84bb4087bf1dbd8ef5,
         type: 3}
@@ -20822,6 +20834,75 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851722307}
   m_Mesh: {fileID: 1153159191922478106, guid: 3529cb96f4a17504a914863e94c57fb3, type: 3}
+--- !u!1001 &1871389355
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 563261101166870125, guid: 6ba603a1687b3294193190a407581874,
+        type: 3}
+      propertyPath: m_Name
+      value: Shards
+      objectReference: {fileID: 0}
+    - target: {fileID: 563261101166870126, guid: 6ba603a1687b3294193190a407581874,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.367
+      objectReference: {fileID: 0}
+    - target: {fileID: 563261101166870126, guid: 6ba603a1687b3294193190a407581874,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.245
+      objectReference: {fileID: 0}
+    - target: {fileID: 563261101166870126, guid: 6ba603a1687b3294193190a407581874,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.555
+      objectReference: {fileID: 0}
+    - target: {fileID: 563261101166870126, guid: 6ba603a1687b3294193190a407581874,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563261101166870126, guid: 6ba603a1687b3294193190a407581874,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563261101166870126, guid: 6ba603a1687b3294193190a407581874,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563261101166870126, guid: 6ba603a1687b3294193190a407581874,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 563261101166870126, guid: 6ba603a1687b3294193190a407581874,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 563261101166870126, guid: 6ba603a1687b3294193190a407581874,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563261101166870126, guid: 6ba603a1687b3294193190a407581874,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563261101166870126, guid: 6ba603a1687b3294193190a407581874,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6ba603a1687b3294193190a407581874, type: 3}
 --- !u!1 &1882297464
 GameObject:
   m_ObjectHideFlags: 0
@@ -26727,6 +26808,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.083
       objectReference: {fileID: 0}
+    - target: {fileID: 8026912634844427169, guid: dcd35b3490d607b46bd48701eabf9aed,
+        type: 3}
+      propertyPath: createCrystalAnimator
+      value: 
+      objectReference: {fileID: 705553230}
+    - target: {fileID: 8026912634844427169, guid: dcd35b3490d607b46bd48701eabf9aed,
+        type: 3}
+      propertyPath: shards
+      value: 
+      objectReference: {fileID: 705553228}
     - target: {fileID: 8216942327494418148, guid: dcd35b3490d607b46bd48701eabf9aed,
         type: 3}
       propertyPath: m_Convex
